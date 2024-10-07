@@ -7,7 +7,7 @@ const PORT = 3000;
 let natsClient;
 
 async function initNATS() {
-    natsClient = await connect({ servers: "nats://localhost:4223" }); // Adjust the NATS server address as needed
+    natsClient = await connect({ servers: "nats://localhost:4223" }); 
 }
 
 app.use(express.static(path.join(__dirname)));
@@ -29,7 +29,7 @@ app.get('/color', async (req, res) => {
         const js = (await natsClient).jetstream();
         const bucketName = "my_bucket_3";
         const kv = await js.views.kv(bucketName);
-        const key = `leaf-node-1.variations.${username}`; // Use username as part of the key
+        const key = `leaf-node-1.variations.${username}`; 
         const result = await kv.get(key);
         
         if (!result || !result.value) {
